@@ -1,0 +1,27 @@
+/* *****************************************************************************
+ *  Name:    Akitikori
+ *  NetID:   rakitikori
+ *  Precept: P04
+ *
+ *
+ *  Description:  Given an array nums of integers, return how many of them contain an even number of digits.
+ *
+ **************************************************************************** */
+
+class Solution {
+    public int findNumbers(int[] nums) {
+        // check through the loop,
+        // for each element, turn it into a string and check the lenght of the string
+        // if the length of the string is even, add one to a counter,
+        // otherwise, keep on.
+        int count = 0;
+        for (int i = 0; i < nums.length; i++){
+            int answer = (Integer.toString(nums[i]).length()) % 2;
+            if (answer == 0){
+                count++;
+            }
+        }
+        return count;
+        
+    }
+}
