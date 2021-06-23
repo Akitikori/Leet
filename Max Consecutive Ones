@@ -1,0 +1,63 @@
+// /* *****************************************************************************
+ *  Name:    Akitikori
+ *  NetID:   rakitikori
+ *  Precept: P04
+ *
+ *
+ *  Description:  Given a binary array nums, return the maximum number of consecutive 1's in the array.
+ *
+ *
+ **************************************************************************** */
+class Solution {
+    // keep a counter for the current max ones in the array
+    // initialise to 0
+    // keep a counter for the current number of ones that you are tracing
+    // initialise to 0
+    // remember to compare the two values whenever you want to update 
+    // still think about: how to update
+    // start traversing the array
+    // use a for loop to check through
+    // use a private method to count the ones in the train
+    // if you see a one, add one to the counter
+    // if you encounter one, add another to the counter,
+    // if you encounter a zero, return the method with the number of ones you counted
+    // use this number of zeros to update the part where you search in the array,
+    // continue until you are at the end of the array
+    public int findMaxConsecutiveOnes(int[] nums) {
+        // counter for the current max ones in the array, current number of ones, and index in the             //array we are checking
+         int max = 0;
+         int index = 0;
+        // while loop to traverse the array
+        while(index < nums.length){
+            int current = 0;
+            if (nums[index] == 1){
+                // this should count how many ones are there in a row and return the number in current
+               current = count(nums, index);
+                // if the current number of ones is greater than what we thought before, update that
+                if (current > max){
+                    max = current;
+                }
+            index += current;
+            }
+            // if we don't see a 1, just increase the index and go on
+            else {
+                index++;
+            }
+        }
+        return max;
+    }
+    
+    private int count(int[] arr, int index){
+        // store how many ones you are seeing
+        int ones = 0;
+            while (arr[index] == 1){
+                ones++;
+                index++;
+                if (index == arr.length){
+                    break;
+                }      
+        }
+        return ones;
+    }
+    public static void main(String[] args){}
+}
